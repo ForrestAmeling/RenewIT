@@ -1,34 +1,50 @@
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFunctions, httpsCallable } from "firebase/functions"; // Add this
+
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT",
-    storageBucket: "YOUR_BUCKET.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAcnvEEbhcEXIBek74PVWj0GwsXRacM0UU",
+    authDomain: "renewit-b89e7.firebaseapp.com",
+    projectId: "renewit-b89e7",
+    storageBucket: "renewit-b89e7.firebasestorage.app",
+    messagingSenderId: "492465454894",
+    appId: "1:492465454894:web:522e769e162113354dc4bf",
+    measurementId: "G-B7BQCWNXYQ"
 };
 
-firebase.initializeApp(firebaseConfig);
+// Initialize Firebase services
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const functions = getFunctions(app); // Initialize Functions
 
-document.getElementById('contactForm').addEventListener('submit', (e) => {
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const contactData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        inquiryType: document.getElementById('inquiryType').value,
-        message: document.getElementById('message').value,
-        timestamp: new Date().toISOString()
-    };
+    try {
+        const contactData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            inquiryType: document.getElementById('inquiryType').value,
+            message: document.getElementById('message').value,
+            timestamp: new Date().toISOString()
+        };
 
-    // Call Firebase Function
-    const submitContactForm = firebase.functions().httpsCallable('submitContactForm');
-    submitContactForm(contactData)
-        .then(result => {
-            alert('Message sent successfully!');
-            document.getElementById('contactForm').reset();
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error sending message. Please try again.');
-        });
+        // Use modular function call
+        const submitContactForm = httpsCallable(functions, 'submitContactForm');
+        await submitContactForm(contactData);
+        
+        alert('Message sent successfully!');
+        document.getElementById('contactForm').reset();
+        
+        // Track conversion
+        analytics.logEvent('contact_form_submitted');
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Error: ${error.message}`);
+        // If using Sentry
+        if (typeof Sentry !== 'undefined') {
+            Sentry.captureException(error);
+        }
+    }
 });
+

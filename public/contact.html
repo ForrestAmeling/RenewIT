@@ -26,3 +26,9 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
 <script src="script.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+<script>
+  grecaptcha.ready(() => {
+    grecaptcha.execute('YOUR_SITE_KEY', {action: 'contact'});
+  });
+</script>
