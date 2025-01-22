@@ -123,26 +123,47 @@ main {
 }
 
 /* Form Elements */
+/* ===== Modern Form Styling ===== */
 .contact-container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
 }
 
-#formMessage {
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+input, select, textarea {
+    width: 100%;
     padding: 1rem;
-    border-radius: 4px;
-    margin-top: 1rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    background: rgba(0,0,0,0.3);
+    color: var(--light-text);
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-#formMessage.success {
-    background: rgba(46, 204, 113, 0.1);
-    border: 1px solid var(--primary-color);
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46,204,113,0.1);
 }
 
-#formMessage.error {
-    background: rgba(231, 76, 60, 0.1);
-    border: 1px solid #e74c3c;
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+#recaptchaBadge {
+    margin: 1rem 0;
 }
 
 /* Footer */
