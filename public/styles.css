@@ -176,3 +176,23 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 0.5rem;
 }
+
+/* Terms of Service Specific Styles */
+.terms-section h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.terms-section .card {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+}
+
+.terms-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
