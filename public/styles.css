@@ -1,3 +1,4 @@
+/* ===== Base Variables & Styles ===== */
 :root {
     --primary-color: #2ECC71;
     --dark-bg: #1a1a1a;
@@ -9,34 +10,89 @@ body {
     line-height: 1.6;
     color: var(--light-text);
     background-color: var(--dark-bg);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('assets/hero-bg.jpg');
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                url('assets/hero-bg.webp');
-  }
+main {
+    flex: 1;
+}
 
-.mission-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* ===== Component Styles ===== */
+/* Modern Navigation */
+.nav-links {
+    list-style: none;
+    display: flex;
     gap: 2rem;
-    padding: 2rem 0;
+    padding: 1rem 2rem;
+    margin: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
-.mission-card {
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.nav-links a:hover {
     background: rgba(255,255,255,0.1);
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s ease;
 }
 
-.mission-card:hover {
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 2rem;
+    background: 
+        linear-gradient(135deg, rgba(0,0,0,0.9), rgba(46,204,113,0.2)),
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+        url('assets/hero-bg.webp');
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Cards */
+.mission-card,
+.service-card,
+.privacy-section .card,
+.terms-section .card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.mission-card:hover,
+.service-card:hover {
     transform: translateY(-5px);
 }
 
+.service-card.highlight {
+    border: 2px solid var(--primary-color);
+}
+
+/* Buttons & CTAs */
 .cta-button {
     background: var(--primary-color);
     color: var(--light-text);
@@ -45,159 +101,28 @@ body {
     text-decoration: none;
     display: inline-block;
     margin-top: 1rem;
+    transition: all 0.3s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    
-    .hero-content {
-        text-align: center;
-    }
+.button-3d {
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
 }
 
-/* Services Page Specific Styles */
-.content-section {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.button-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46,204,113,0.3);
 }
 
-.grid-2col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.service-card {
-    background: rgba(255,255,255,0.05);
-    padding: 2rem;
-    border-radius: 10px;
-    margin: 2rem 0;
-}
-
-.service-card.highlight {
-    border: 2px solid var(--primary-color);
-}
-
-.numbered-services {
-    list-style-type: decimal;
-    padding-left: 2rem;
-}
-
-.data-destruction {
-    background: rgba(0,0,0,0.3);
-    padding: 1.5rem;
-    border-radius: 8px;
-}
-
-.impact-cta {
-    text-align: center;
-    padding: 4rem 2rem;
-}
-
-.cta-box {
+.glass-effect {
     background: rgba(255,255,255,0.1);
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 0 auto;
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
-.partner-list {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    margin: 2rem 0;
-}
-
-.partner-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Footer Styles */
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem;
-    background: rgba(0,0,0,0.8);
-}
-
-.footer-section h4 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-links a {
-    color: var(--light-text);
-    font-size: 1.5rem;
-}
-
-.copyright {
-    text-align: center;
-    padding: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-/* Privacy Policy Specific Styles */
-.privacy-section h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.effective-date {
-    text-align: center;
-    color: #888;
-    margin-bottom: 2rem;
-}
-
-.privacy-section .card {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 8px;
-}
-
-.privacy-section h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 0.5rem;
-}
-
-/* Terms of Service Specific Styles */
-.terms-section h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-.terms-section .card {
-    margin: 2rem 0;
-    padding: 2rem;
-    background: rgba(255,255,255,0.05);
-    border-radius: 8px;
-}
-
-.terms-section h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 0.5rem;
-}
-
-/* Contact Form Improvements */
+/* Form Elements */
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
@@ -220,6 +145,32 @@ body {
     border: 1px solid #e74c3c;
 }
 
+/* Footer */
+footer {
+    margin-top: auto;
+    background: #000;
+    padding: 2rem 0 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.copyright {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===== Utility Classes ===== */
+.hidden {
+    display: none !important;
+}
+
 .loader {
     border: 3px solid #f3f3f3;
     border-top: 3px solid var(--primary-color);
@@ -236,6 +187,24 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-.hidden {
-    display: none !important;
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .nav-links {
+        justify-content: center;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .mission-grid,
+    .grid-2col {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero {
+        padding: 100px 1rem 1rem;
+    }
 }
