@@ -196,3 +196,46 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     padding-bottom: 0.5rem;
 }
+
+/* Contact Form Improvements */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#formMessage {
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+#formMessage.success {
+    background: rgba(46, 204, 113, 0.1);
+    border: 1px solid var(--primary-color);
+}
+
+#formMessage.error {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid #e74c3c;
+}
+
+.loader {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}

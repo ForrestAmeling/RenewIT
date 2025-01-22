@@ -1,34 +1,36 @@
+<!-- Remove old Firebase scripts and update form structure -->
 <section class="contact-section">
     <div class="contact-container">
         <h2>Get in Touch</h2>
         <form id="contactForm">
             <div class="form-group">
-                <input type="text" id="name" placeholder="Name" required>
+                <input type="text" id="name" placeholder="Name" required aria-label="Your name">
             </div>
             <div class="form-group">
-                <input type="email" id="email" placeholder="Email" required>
+                <input type="email" id="email" placeholder="Email" required aria-label="Your email">
             </div>
             <div class="form-group">
-                <select id="inquiryType">
+                <select id="inquiryType" aria-label="Inquiry type">
                     <option value="general">General Inquiry</option>
                     <option value="business">Business Partnership</option>
                     <option value="recycling">E-Waste Pickup</option>
                 </select>
             </div>
             <div class="form-group">
-                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                <textarea id="message" placeholder="Your Message" rows="5" required aria-label="Your message"></textarea>
             </div>
-            <button type="submit" class="cta-button">Send Message</button>
+            <div class="form-group">
+                <div id="recaptchaBadge"></div>
+            </div>
+            <button type="submit" class="cta-button" id="submitBtn">
+                <span class="button-text">Send Message</span>
+                <div class="loader hidden"></div>
+            </button>
         </form>
+        <div id="formMessage" class="hidden"></div>
     </div>
 </section>
 
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-functions.js"></script>
-<script src="script.js"></script>
+<!-- Firebase and reCAPTCHA scripts -->
+<script type="module" src="script.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
-<script>
-  grecaptcha.ready(() => {
-    grecaptcha.execute('YOUR_SITE_KEY', {action: 'contact'});
-  });
-</script>
