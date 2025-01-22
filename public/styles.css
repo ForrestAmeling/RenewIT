@@ -57,3 +57,122 @@ body {
         text-align: center;
     }
 }
+
+/* Services Page Specific Styles */
+.content-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.service-card {
+    background: rgba(255,255,255,0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+.service-card.highlight {
+    border: 2px solid var(--primary-color);
+}
+
+.numbered-services {
+    list-style-type: decimal;
+    padding-left: 2rem;
+}
+
+.data-destruction {
+    background: rgba(0,0,0,0.3);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.impact-cta {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.cta-box {
+    background: rgba(255,255,255,0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.partner-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.partner-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Footer Styles */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background: rgba(0,0,0,0.8);
+}
+
+.footer-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--light-text);
+    font-size: 1.5rem;
+}
+
+.copyright {
+    text-align: center;
+    padding: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Privacy Policy Specific Styles */
+.privacy-section h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.effective-date {
+    text-align: center;
+    color: #888;
+    margin-bottom: 2rem;
+}
+
+.privacy-section .card {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+}
+
+.privacy-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
