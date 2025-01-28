@@ -13,16 +13,35 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-size: 1.1rem;
+    /* 1) Increase base font size for better readability */
+    font-size: 1.125rem; /* ~18px */
 }
 
-h1 { font-size: 2.2rem; margin-bottom: 1.5rem; }
-h2 { font-size: 1.8rem; margin-bottom: 1.2rem; }
-h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+/* 2) Bigger global headings */
+h1 {
+    font-size: 3rem; 
+    margin-bottom: 1.5rem;
+}
+h2 {
+    font-size: 2rem; 
+    margin-bottom: 1.2rem;
+}
+h3 {
+    font-size: 1.6rem; 
+    margin-bottom: 1rem;
+}
 
 main {
     flex: 1;
     padding: 2rem 0;
+}
+
+/* 
+   3) Increase base padding for all <section> elements 
+      to add more whitespace between content sections.
+*/
+section {
+    padding: 5rem 2rem; 
 }
 
 /* ===== Component Styles ===== */
@@ -66,15 +85,22 @@ main {
 
 /* Hero Section */
 .hero {
+    /* 4) Increased top padding to avoid overlap, lighten overlay to 0.6 */
     min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 100px 2rem 2rem;
-    background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(46,204,113,0.2)),
-                url('assets/hero-bg.webp');
+    padding: 120px 2rem 2rem;
+    background: 
+        linear-gradient(135deg, rgba(0,0,0,0.6), rgba(46,204,113,0.2)),
+        url('assets/hero-bg.webp');
 }
+
+/* (Optional) Increase hero-content h1 if you want an even larger hero heading */
+/* .hero-content h1 {
+    font-size: 3rem;
+} */
 
 .hero-content h1 {
     font-size: 2.5rem;
@@ -86,8 +112,9 @@ main {
 /* Cards */
 .mission-card,
 .service-card {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(10px);
+    /* 5) Reduced blur and slightly more opaque BG for glass effect */
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.1);
     padding: 1.5rem;
     border-radius: 16px;
@@ -124,9 +151,10 @@ main {
     box-shadow: 0 5px 15px rgba(46,204,113,0.3);
 }
 
+/* 6) Updated the .glass-effect class similarly */
 .glass-effect {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.2);
 }
 
@@ -137,6 +165,18 @@ main {
     padding: 2rem;
     border-radius: 16px;
     background: rgba(255,255,255,0.05);
+    /* etc. */
+}
+
+.contact-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem; /* Make the heading stand out */
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left; /* or center if you prefer */
 }
 
 .form-group { margin-bottom: 1.5rem; }
@@ -174,10 +214,32 @@ footer {
     padding: 2rem;
 }
 
-.copyright {
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.social-links a {
+    font-size: 1.8rem;
+}
+
+/* Footer Improvements */
+copyright {
     text-align: center;
     padding: 1rem;
     border-top: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.9);
+    margin-top: 2rem;
 }
 
 /* Utilities */
@@ -198,21 +260,25 @@ footer {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+
+    /* 7) Let nav-links wrap on smaller screens */
     .nav-links {
         justify-content: center;
         padding: 1rem;
         gap: 1rem;
+        flex-wrap: wrap; 
     }
-    
+
+    /* Keep hero from overlapping on smaller devices, too */
     .hero {
         min-height: 50vh;
-        padding: 80px 1rem 1rem;
+        padding: 100px 1rem 1rem;
     }
-    
+
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .mission-grid,
     .grid-2col,
     .service-grid {
@@ -221,37 +287,8 @@ footer {
 }
 
 /* ===== Community Styles ===== */
-.mission-section { padding: 3rem 0; }
-
-.local-badge {
-    background: var(--primary-color);
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    display: inline-block;
-}
-
-.security-methods {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    text-align: center;
-}
-
-.service-grid {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.price {
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-top: 1rem;
-}
-
-/* Mission Section */
-.mission-section {
-    padding: 4rem 0;
+.mission-section { 
+    padding: 4rem 0; 
     background: rgba(46,204,113,0.05);
 }
 
@@ -279,32 +316,6 @@ footer {
     margin-bottom: 1rem;
 }
 
-/* Footer Improvements */
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-}
-
-.social-links a {
-    font-size: 1.8rem;
-}
-
-.copyright {
-    background: rgba(0,0,0,0.9);
-    padding: 1.5rem;
-    margin-top: 2rem;
-}
-
 /* Impact Stats */
 .impact-stats {
     display: flex;
@@ -328,3 +339,15 @@ footer {
     font-size: 0.9rem;
     opacity: 0.9;
 }
+
+/* Smaller hero variant for secondary pages like Contact */
+.hero.small-hero {
+    min-height: 40vh; /* Or 50vh, depending on taste */
+    /* Keep the same background gradient, or pick a new image */
+    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(46,204,113,0.2)),
+                url('assets/hero-bg.webp');
+    background-position: center;
+    background-size: cover;
+    padding: 120px 2rem 2rem;
+  }
+  
